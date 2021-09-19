@@ -5,7 +5,11 @@ Inspired by the Fae Court community challenge over at [The Alexandrian blog](htt
 ## Usage
 
 Before running the CLI for the first time, run this in the top-level directory:
-    npm install
+```
+npm install
+```
 
 Once you've done that, you can generate a new character with:
-    npm run-script gen
+```
+npm run-script gen
+```
