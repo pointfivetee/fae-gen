@@ -1,6 +1,6 @@
 # Fae Generator
 
-Inspired by the Fae Court community challenge over at [The Alexandrian blog](https://thealexandrian.net)'s Discord.
+Inspired by the Fae Court community challenge over at [The Alexandrian blog](https://thealexandrian.net)'s Discord!
 
 ## Usage
 
