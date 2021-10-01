@@ -262,23 +262,8 @@ function applyTags(options, tags) {
     return out;
 }
 
-let tags = {
-    "blossom": 0,
-    "crystal": 0,
-    "ember": 0,
-    "shadow": 0,
-    "thistle": 0,
-}
-tags[pickRandom(Object.keys(tags))] += 6;
-tags[pickRandom(Object.keys(tags))] += 4;
 
-let context = {
-    myFae: {
-        model: "fae",
-        tags: tags,
-    }
-};
-let template =
+const template =
 `**Name**: {myFae.fullName}
 
 **Appearance**: {myFae.appearance}
@@ -287,13 +272,37 @@ let template =
 
 **Roleplaying**:
     - {myFae.gesture}
-    - {myFae.personality}`
-let out = expand(
-    template,
-    context,
-);
+    - {myFae.personality}`;
 
-//console.log("\ncontext:", context);
-//console.log();
-console.log(out);
-console.log();
+let count = parseInt(process.argv[2]);
+if (!count) {
+    count = 1;
+}
+
+for (let i = 0; i < count; i++) {
+    let tags = {
+        "blossom": 0,
+        "crystal": 0,
+        "ember": 0,
+        "shadow": 0,
+        "thistle": 0,
+    }
+    tags[pickRandom(Object.keys(tags))] += 6;
+    tags[pickRandom(Object.keys(tags))] += 4;
+    
+    let context = {
+        myFae: {
+            model: "fae",
+            tags: tags,
+        }
+    };
+    let out = expand(
+        template,
+        context,
+    );
+    
+    //console.log("\ncontext:", context);
+    //console.log();
+    console.log(out);
+    console.log("\n-----\n");
+}
