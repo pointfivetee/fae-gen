@@ -12,7 +12,7 @@ export function pickRandom(arr) {
         i++;
     }
     let pick = arr[Math.floor(Math.random() * arr.length)];
-    console.log(`<<retry limit reached: reusing item ${pick}>>`);
+    //console.log(`<<retry limit reached: reusing item ${pick}>>`);
     return pick;
 }
 
@@ -37,5 +37,3 @@ export function t(strings, ...tokens) {
 export function rollD(n) {
     return Math.floor(Math.random()*n)+1;
 }
-
-console.log('utils');

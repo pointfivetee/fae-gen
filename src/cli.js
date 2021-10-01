@@ -99,6 +99,7 @@ const models = {
             "bone-white | crystal",
             "cerulean   | blossom",
             "cherry-red | ember",
+            "corn-yellow",
             "dark brown",
             "golden",
             "mint-green | blossom",
@@ -202,46 +203,46 @@ function expand(initText, context) {
     if (!initText) return "";
 
     let text = initText;
-    console.log("\nExpand text");
-    console.log("text:", text);
-    console.log("context:", context);
+    //console.log("\nExpand text");
+    //console.log("text:", text);
+    //console.log("context:", context);
     let tokens = text.match(/{[^{]*}/g);
     if (tokens) {
         for (let token of tokens) {
             text = text.replace(token, expandToken(token, context));
         }
     }
-    console.log(`Expanded ${initText} as ${text}`);
+    //console.log(`Expanded ${initText} as ${text}`);
     return text;
 }
 
 function expandToken(initText, context) {
     let text = initText;
-    console.log("\nExpand token");
+    //console.log("\nExpand token");
     text = text.slice(1, -1);
-    console.log("text:", text);
-    console.log("context:", context);
+    //console.log("text:", text);
+    //console.log("context:", context);
     let props = text.split(".");
-    console.log("props:", props);
+    //console.log("props:", props);
     let parent = context;
     for (let prop of props) {
         if (parent[prop]) {
-            console.log(parent[prop]);
+            //console.log(parent[prop]);
             parent = parent[prop];
         } else {
-            console.log(`${prop} not found in ${JSON.stringify(parent)}`);
+            //console.log(`${prop} not found in ${JSON.stringify(parent)}`);
             let options = models[parent.model][prop];
             options = applyTags(options, parent.tags);
-            console.log("options:", options);
+            //console.log("options:", options);
             let choice = pickRandom(options);
-            console.log("choice:", choice);
+            //console.log("choice:", choice);
             let expansion = expand(choice, parent);
-            console.log("expansion:", expansion);
+            //console.log("expansion:", expansion);
             parent[prop] = expansion;
             parent = expansion;
         }
     }
-    console.log(`Token ${initText} expanded as ${parent}`);
+    //console.log(`Token ${initText} expanded as ${parent}`);
     return parent;
 }
 
@@ -292,7 +293,7 @@ let out = expand(
     context,
 );
 
-console.log("\ncontext:", context);
-console.log();
+//console.log("\ncontext:", context);
+//console.log();
 console.log(out);
 console.log();
